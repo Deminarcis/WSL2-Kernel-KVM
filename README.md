@@ -6,11 +6,9 @@ These are the same builds used in (Commandant)[gitub.com/deminarcis/commandant] 
 
 Included are the build scripts and binaries. You dont have to build this yourself but you can
 
-If using the binaries provided in this repo, please either rename to bzImage when adding them to .wslconfig on your windows host or update the .wslconfig appropriately
-
-I recommend building in WSL2 using the OpenSUSE Tumbleweed contianer from MS Store
+I recommend building in WSL2 using the OpenSUSE Tumbleweed contianer from MS Store, although there is a script for bulding on Fedora (tested on Fedora 38 and 39, should also work on RHEL and CentOS 9)
 
 ### Building
 In your Opensuse container under WSL2 clone the repo and run `build-wsl.sh`
-
+Alternately if building on Fedora use the included script
 To clean things up just delete the `kernel-wsl2` folder once you have moved the bzImage file out
