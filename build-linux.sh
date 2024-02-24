@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 # Build environment is based on latest stable Fedora. This is here for transparency but you may use it if you wish to build your own kernel for WSL2
-sudo dnf upgrade -y --refresh
-sudo dnf install -y qt5-qtbase-devel libXi-devel gcc-c++ kernel-devel kernel-headers openssl bc openssl-devel elfutils-libelf-devel aria2 jq
+if [ -f /etc/redhat-release ] || [ -f /etc/fedora-release  ]; then
+    sudo dnf upgrade -y --refresh
+    sudo dnf install -y qt5-qtbase-devel libXi-devel gcc-c++ kernel-devel kernel-headers openssl bc openssl-devel elfutils-libelf-devel aria2 jq
+elif [ -f /etc/debian_version ]; then
+    sudo apt update
+    sudo apt install build-essential flex bison dwarves libssl-dev libelf-dev
+elif [ -f /etc/suse-release ] ; then
+    sudo zypper -n up
+    sudo bash -c "zypper in -y -t pattern devel_basis && zypper in -y bc openssl openssl-devel dwarves rpm-build libelf-devel aria2 jq"
+fi
 mkdir -p kernel-wsl2
 cd kernel-wsl2
 curl -s https://api.github.com/repos/microsoft/WSL2-Linux-Kernel/releases/latest | jq -r '.name' | sed 's/$/.tar.gz/' | sed 's#^#https://github.com/microsoft/WSL2-Linux-Kernel/archive/refs/tags/#' | aria2c -i -
