@@ -5,7 +5,7 @@ if [ -f /etc/redhat-release ] || [ -f /etc/fedora-release  ]; then
     sudo dnf install -y qt5-qtbase-devel libXi-devel gcc-c++ kernel-devel kernel-headers openssl bc openssl-devel elfutils-libelf-devel aria2 jq
 elif [ -f /etc/debian_version ]; then
     sudo apt update
-    sudo apt install -y build-essential flex bison dwarves libssl-dev libelf-dev
+    sudo apt install -y build-essential flex bison dwarves libssl-dev libelf-dev jq aria2
 elif [ -f /etc/suse-release ] ; then
     sudo zypper -n up
     sudo bash -c "zypper in -y -t pattern devel_basis && zypper in -y bc openssl openssl-devel dwarves rpm-build libelf-devel aria2 jq"
