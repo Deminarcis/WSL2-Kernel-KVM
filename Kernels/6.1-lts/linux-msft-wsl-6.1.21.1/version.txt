@@ -1,0 +1,4 @@
+linux-msft-wsl-6.1.21.1
+released: March31 2023
+Built: June 21 2024
+Source: https://github.com/microsoft/WSL2-Linux-Kernel/releases
