@@ -1,5 +1,5 @@
-linux-msft-wsl-6.6.36.3
-released: July 2 2024
-Built: July 6 2024
+linux-msft-wsl-6.6.36.6
+released: September 2024
+Built: September 14 2024
 Source: https://github.com/microsoft/WSL2-Linux-Kernel/releases
 Note: wsl-6.6 includes loadable modules which will be disabled when using custom builds
