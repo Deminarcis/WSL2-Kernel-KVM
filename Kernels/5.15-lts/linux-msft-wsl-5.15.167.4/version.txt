@@ -1,0 +1,4 @@
+linux-msft-wsl-5.15.167.4 Latest
+released: November 9 2024
+Built: November 30 2024
+Source: https://github.com/microsoft/WSL2-Linux-Kernel/releases

@@ -2,13 +2,13 @@
 echo -e "[+] This will compile locally a release of the WSL2 kernel you provide from microsoft's github and enable KVM, HyperV and Paravirtualisation modules with the intent of running a nested hypervisor under WSL2. /n Binaries are in the Kernel folder for the latest 2 releases of each series. /n This script is provided for simplicity and transparency providing reproducable builds of the binaries included in this repo. There is no need to use this unless the provided binaries are too new or too old."
 if [ -f /etc/redhat-release ] || [ -f /etc/fedora-release  ]; then
     sudo dnf check-update -y --refresh
-    sudo dnf install -y qt5-qtbase-devel libXi-devel gcc-c++ kernel-devel kernel-headers openssl bc openssl-devel elfutils-libelf-devel aria2 jq
+    sudo dnf install -y qt5-qtbase-devel libXi-devel gcc-c++ kernel-devel kernel-headers openssl bc openssl-devel openssl-devel-engine elfutils-libelf-devel aria2 jq
 elif [ -f /etc/debian_version ]; then
     sudo apt update
     sudo apt install -y build-essential flex bison dwarves libssl-dev libelf-dev jq aria2 bc
 elif [ -f /etc/suse-release ]; then
     sudo zypper -n ref
-    sudo bash -c "zypper in -y -t pattern devel_basis && zypper in -y bc openssl openssl-devel dwarves rpm-build libelf-devel aria2 jq"
+    sudo bash -c "zypper in -y -t pattern devel_basis && zypper in -y bc openssl openssl-devel openssl-devel-engine dwarves rpm-build libelf-devel aria2 jq"
 fi
 if [ -f ./*linux-msft-wsl-*.tar.gz ]; then
     echo -e "[+] Kernel found, unpacking."

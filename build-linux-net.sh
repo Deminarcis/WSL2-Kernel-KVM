@@ -2,13 +2,13 @@
 echo -e "[+] This will download and compile the latest release of the WSL2 kernel enabling KVM, HyperV and Paravirtualisation modules with the intent of running a nested hypervisor under WSL2. /n Binaries are in the Kernel folder. /n This script is provided for simplicity and transparency providing reproducable builds of the binaries included in this repo. It should work on all families of Linux or from inside a WSL2 container, but testing has only been undertaken on latest stable Fedora"
 if [ -f /etc/redhat-release ] || [ -f /etc/fedora-release  ]; then
     sudo dnf check-update -y --refresh
-    sudo dnf install -y qt5-qtbase-devel libXi-devel gcc-c++ kernel-devel kernel-headers openssl bc openssl-devel elfutils-libelf-devel aria2 jq
+    sudo dnf install -y qt5-qtbase-devel libXi-devel gcc-c++ kernel-devel kernel-headers openssl bc openssl-devel openssl-devel-engine elfutils-libelf-devel aria2 jq
 elif [ -f /etc/debian_version ]; then
     sudo apt update
     sudo apt install -y build-essential flex bison dwarves libssl-dev libelf-dev jq aria2 bc
 elif [ -f /etc/suse-release ]; then
     sudo zypper -n ref
-    sudo bash -c "zypper in -y -t pattern devel_basis && zypper in -y bc openssl openssl-devel dwarves rpm-build libelf-devel aria2 jq"
+    sudo bash -c "zypper in -y -t pattern devel_basis && zypper in -y bc openssl openssl-devel openssl-devel-engine dwarves rpm-build libelf-devel aria2 jq"
 fi
 mkdir -p kernel-wsl2
 cd kernel-wsl2
