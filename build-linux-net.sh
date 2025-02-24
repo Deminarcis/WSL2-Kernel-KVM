@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 echo -e "[+] This will download and compile the latest release of the WSL2 kernel enabling KVM, HyperV and Paravirtualisation modules with the intent of running a nested hypervisor under WSL2. /n Binaries are in the Kernel folder. /n This script is provided for simplicity and transparency providing reproducable builds of the binaries included in this repo. It should work on all families of Linux or from inside a WSL2 container, but testing has only been undertaken on latest stable Fedora"
 if [ -f /etc/redhat-release ] || [ -f /etc/fedora-release  ]; then
     sudo dnf check-update -y --refresh

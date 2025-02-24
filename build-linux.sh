@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 echo -e "[+] This will compile locally a release of the WSL2 kernel you provide from microsoft's github and enable KVM, HyperV and Paravirtualisation modules with the intent of running a nested hypervisor under WSL2. /n Binaries are in the Kernel folder for the latest 2 releases of each series. /n This script is provided for simplicity and transparency providing reproducable builds of the binaries included in this repo. There is no need to use this unless the provided binaries are too new or too old."
 if [ -f /etc/redhat-release ] || [ -f /etc/fedora-release  ]; then
     sudo dnf check-update -y --refresh
