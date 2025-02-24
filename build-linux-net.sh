@@ -11,10 +11,10 @@ elif [ -f /etc/suse-release ]; then
     sudo bash -c "zypper in -y -t pattern devel_basis && zypper in -y bc openssl openssl-devel openssl-devel-engine dwarves rpm-build libelf-devel aria2 jq"
 fi
 mkdir -p kernel-wsl2
-cd kernel-wsl2
+cd kernel-wsl2 || return
 curl -s https://api.github.com/repos/microsoft/WSL2-Linux-Kernel/releases/latest | jq -r '.name' | sed 's/$/.tar.gz/' | sed 's#^#https://github.com/microsoft/WSL2-Linux-Kernel/archive/refs/tags/#' | aria2c -i -
 tar -xf *.tar.gz
-cd "$(find -type d -name "WSL2-Linux-Kernel-linux-msft-wsl-*")"
+cd "$(find -type d -name "WSL2-Linux-Kernel-linux-msft-wsl-*")" || return
 cp Microsoft/config-wsl .config
 sed -i 's/# CONFIG_KVM_GUEST is not set/CONFIG_KVM_GUEST=y/g' .config
 sed -i 's/# CONFIG_ARCH_CPUIDLE_HALTPOLL is not set/CONFIG_ARCH_CPUIDLE_HALTPOLL=y/g' .config
